@@ -10,7 +10,8 @@ sudo apt-get install python-pip git jq
 
 pip install setuptools
 pip install --user git+git://github.com/powerline/powerline
-
+LINE='if [ -d "$HOME/.local/bin" ]; then PATH="$HOME/.local/bin:$PATH";fi'
+add_line "${LINE}" ~/.bashrc
 LINE='if [ -d "$HOME/.local/bin" ] ; then PATH="$HOME/.local/bin:$PATH"; fi'
 add_line "${LINE}" ~/.profile
 
