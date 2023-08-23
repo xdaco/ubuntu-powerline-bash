@@ -21,132 +21,21 @@ To add the git version control system status in the terminal install powerline-g
 
 Edit the following file for colorscheme. 
 
-`~/.local/lib/your_python_version/site-packages/powerline/config_files/colorschemes/shell/default.json`
+Now we will add our custom configuations. For that we need to have to edit the following files.
 
-Here is my default.json for color scheme. 
+`1. ~/.local/lib/your_python_version/site- packages/powerline/config_files/config.json`
+`2. ~/.local/lib/your_python_version/site- packages/powerline/config_files/colorschemes/default.json`
+`3. ~/.local/lib/your_python_version/site- packages/powerline/config_files/themes/shell/__main__.json`
 
-```
-{
-	"name": "Default color scheme for shell prompts",
-	"groups": {
-		"hostname": {
-			"fg": "brightyellow",
-			"bg": "mediumorange",
-			"attrs": []
-		},
-		"environment": {
-			"fg": "white",
-			"bg": "darkestgreen",
-			"attrs": []
-		},
-		"mode": {
-			"fg": "darkestgreen",
-			"bg": "brightgreen",
-			"attrs": ["bold"]
-		},
-		"attached_clients": {
-			"fg": "white",
-			"bg": "darkestgreen",
-			"attrs": []
-		},
+And We will create our own custome theme
+`.~/.local/lib/your_python_version/site- packages/powerline/config_files/themes/shell/mine.json`
 
-		"gitstatus": {
-			"fg": "gray8",
-			"bg": "gray2",
-			"attrs": []
-		},
-		"gitstatus_branch": {
-			"fg": "gray8",
-			"bg": "gray2",
-			"attrs": []
-		},
-		"gitstatus_branch_clean": {
-			"fg": "green",
-			"bg": "gray2",
-			"attrs": []
-		},
-		"gitstatus_branch_dirty": {
-			"fg": "gray8",
-			"bg": "gray2",
-			"attrs": []
-		},
-		"gitstatus_branch_detached": {
-			"fg": "mediumpurple",
-			"bg": "gray2",
-			"attrs": []
-		},
-		"gitstatus_tag": {
-			"fg": "darkcyan",
-			"bg": "gray2",
-			"attrs": []
-		},
-		"gitstatus_behind": {
-			"fg": "gray10",
-			"bg": "gray2",
-			"attrs": []
-		},
-		"gitstatus_ahead": {
-			"fg": "gray10",
-			"bg": "gray2",
-			"attrs": []
-		},
-		"gitstatus_staged": {
-			"fg": "green",
-			"bg": "gray2",
-			"attrs": []
-		},
-		"gitstatus_unmerged": {
-			"fg": "brightred",
-			"bg": "gray2",
-			"attrs": []
-		},
-		"gitstatus_changed": {
-			"fg": "mediumorange",
-			"bg": "gray2",
-			"attrs": []
-		},
-		"gitstatus_untracked": {
-			"fg": "brightestorange",
-			"bg": "gray2",
-			"attrs": []
-		},
-		"gitstatus_stashed": {
-			"fg": "darkblue",
-			"bg": "gray2",
-			"attrs": []
-		},
-		"gitstatus:divider": {
-			"fg": "gray8",
-			"bg": "gray2",
-			"attrs": []
-		}
-	},
-	"mode_translations": {
-		"vicmd": {
-			"groups": {
-				"mode": {
-					"fg": "darkestcyan",
-					"bg": "white",
-					"attrs": ["bold"]
-				}
-			}
-		}
-	}
-}
-```
-
-Edit the following file for theme. 
-
-`~/.local/lib/your_python_version/site-packages/powerline/config_files/themes/shell/default.json` 
-
-Here is my default.json for theme. 
+Here is my `mine.json` for theme. 
 
 ```
 {
 	"segments": {
-		"left": [{
-				"function": "powerline.segments.shell.mode"
-			},
+		"left": [
 			{
 				"function": "powerline.segments.common.net.hostname",
 				"priority": 10
@@ -156,16 +45,132 @@ Here is my default.json for theme.
 				"priority": 30
 			},
 			{
+				"function": "powerline.segments.common.env.virtualenv",
+				"priority": 50
+			},
+			{
 				"function": "powerline.segments.shell.cwd",
 				"priority": 10
-			}, {
+			},
+			{
 				"function": "powerline_gitstatus.gitstatus",
 				"priority": 40
+			},
+			{
+				"function": "powerline.segments.shell.jobnum",
+				"priority": 20
 			}
-		],
-		"right": []
+		]
 	}
 }
+	
+```
+
+Here is my `default.json` for colorschemes. 
+
+```
+{
+  "groups": {
+    "gitstatus":                 { "fg": "gray8",           "bg": "gray2", "attrs": [] },
+    "gitstatus_branch":          { "fg": "gray8",           "bg": "gray2", "attrs": [] },
+    "gitstatus_branch_clean":    { "fg": "green",           "bg": "gray2", "attrs": [] },
+    "gitstatus_branch_dirty":    { "fg": "gray8",           "bg": "gray2", "attrs": [] },
+    "gitstatus_branch_detached": { "fg": "mediumpurple",    "bg": "gray2", "attrs": [] },
+    "gitstatus_tag":             { "fg": "darkcyan",        "bg": "gray2", "attrs": [] },
+    "gitstatus_behind":          { "fg": "gray10",          "bg": "gray2", "attrs": [] },
+    "gitstatus_ahead":           { "fg": "gray10",          "bg": "gray2", "attrs": [] },
+    "gitstatus_staged":          { "fg": "green",           "bg": "gray2", "attrs": [] },
+    "gitstatus_unmerged":        { "fg": "brightred",       "bg": "gray2", "attrs": [] },
+    "gitstatus_changed":         { "fg": "mediumorange",    "bg": "gray2", "attrs": [] },
+    "gitstatus_untracked":       { "fg": "brightestorange", "bg": "gray2", "attrs": [] },
+    "gitstatus_stashed":         { "fg": "darkblue",        "bg": "gray2", "attrs": [] },
+    "gitstatus:divider":         { "fg": "gray8",           "bg": "gray2", "attrs": [] }
+  }
+}
+
+```
+Here is my `config.json` for custom configuration.
+
+```
+{
+	"common": {
+		"term_truecolor": false
+	},
+	"ext": {
+		"ipython": {
+			"colorscheme": "default",
+			"theme": "in",
+			"local_themes": {
+				"rewrite": "rewrite",
+				"out": "out",
+				"in2": "in2"
+			}
+		},
+		"pdb": {
+			"colorscheme": "default",
+			"theme": "default"
+		},
+		"shell": {
+			"colorscheme": "default",
+			"theme": "mine",
+			"local_themes": {
+				"continuation": "continuation",
+				"select": "select"
+			}
+		},
+		"tmux": {
+			"colorscheme": "default",
+			"theme": "default"
+		},
+		"vim": {
+			"colorscheme": "default",
+			"theme": "default",
+			"local_themes": {
+				"__tabline__": "tabline",
+
+				"cmdwin": "cmdwin",
+				"help": "help",
+				"quickfix": "quickfix",
+
+				"powerline.matchers.vim.plugin.nerdtree.nerdtree": "plugin_nerdtree",
+				"powerline.matchers.vim.plugin.commandt.commandt": "plugin_commandt",
+				"powerline.matchers.vim.plugin.gundo.gundo": "plugin_gundo",
+				"powerline.matchers.vim.plugin.gundo.gundo_preview": "plugin_gundo-preview"
+			}
+		},
+		"wm": {
+			"colorscheme": "default",
+			"theme": "default"
+		}
+	}
+}
+
+
+```
+
+Here is my `__main__.json` for custom theme to work.
+
+```
+{
+  "segment_data": {
+    "hostname": {
+      "args": {
+        "only_if_ssh": true
+      }
+    },
+    "cwd": {
+      "args": {
+        "dir_limit_depth": 2
+      }
+    },
+    "gitstatus": {
+      "args": {
+          "show_tag": true
+      }
+    }
+  }
+}
+
 
 ```
 
