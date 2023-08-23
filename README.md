@@ -24,10 +24,13 @@ Edit the following file for colorscheme.
 Now we will add our custom configuations. For that we need to have to edit the following files.
 
 `1. ~/.local/lib/your_python_version/site- packages/powerline/config_files/config.json`
+
 `2. ~/.local/lib/your_python_version/site- packages/powerline/config_files/colorschemes/default.json`
+
 `3. ~/.local/lib/your_python_version/site- packages/powerline/config_files/themes/shell/__main__.json`
 
-And We will create our own custome theme
+And We will create our own custome theme:
+
 `.~/.local/lib/your_python_version/site- packages/powerline/config_files/themes/shell/mine.json`
 
 Here is my `mine.json` for theme. 
@@ -63,7 +66,7 @@ Here is my `mine.json` for theme.
 		]
 	}
 }
-	
+
 ```
 
 Here is my `default.json` for colorschemes. 
@@ -145,7 +148,6 @@ Here is my `config.json` for custom configuration.
 	}
 }
 
-
 ```
 
 Here is my `__main__.json` for custom theme to work.
@@ -170,7 +172,6 @@ Here is my `__main__.json` for custom theme to work.
     }
   }
 }
-
 
 ```
 
